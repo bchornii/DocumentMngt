@@ -15,10 +15,13 @@ namespace DocumentManagement.Api.Infrastructure.AutofacModules
     public class ApplicationModule : Module
     {
         private readonly UploadFileSettings _uploadFileSettings;
+        private readonly AzBlobStorageSettings _azBlobStorageSettings;
 
-        public ApplicationModule(UploadFileSettings uploadFileSettings)
+        public ApplicationModule(UploadFileSettings uploadFileSettings, 
+            AzBlobStorageSettings azBlobStorageSettings)
         {
             _uploadFileSettings = uploadFileSettings;
+            _azBlobStorageSettings = azBlobStorageSettings;
         }
 
         protected override void Load(ContainerBuilder builder)
@@ -40,8 +43,8 @@ namespace DocumentManagement.Api.Infrastructure.AutofacModules
 
             builder.RegisterType<BlobDataService>()
                 .As<IBlobDataService>()
-                .WithParameter("connectionString", "UseDevelopmentStorage=true")
-                .WithParameter("containerName", "documents")
+                .WithParameter("connectionString", _azBlobStorageSettings.ConnectionString)
+                .WithParameter("containerName", _azBlobStorageSettings.ContainerName)
                 .InstancePerDependency();
 
             builder.RegisterType<FileStreamReader>()

@@ -12,6 +12,7 @@ namespace DocumentManagement.Api
         {
             CreateHostBuilder(args)
                 .Build()
+                .CreateBlobContainers()
                 .MigrateDbContext<DocumentDbContext>((_, __) => { })
                 .Run();
         }

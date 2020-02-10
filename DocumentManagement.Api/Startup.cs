@@ -49,7 +49,8 @@ namespace DocumentManagement.Api
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new ApplicationModule(
-                Configuration.GetSection("UploadFileSettings").Get<UploadFileSettings>()));
+                Configuration.GetSection("UploadFileSettings").Get<UploadFileSettings>(),
+                Configuration.GetSection("AzBlobStorage").Get<AzBlobStorageSettings>()));
             builder.RegisterModule(new MediatorModule());
         }
 

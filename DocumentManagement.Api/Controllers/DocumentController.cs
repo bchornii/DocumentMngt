@@ -51,7 +51,7 @@ namespace DocumentManagement.Api.Controllers
             {
                 readResult.FileName,
                 readResult.Size,
-                Location = result
+                Location = result?.Result
             });
         }
 
