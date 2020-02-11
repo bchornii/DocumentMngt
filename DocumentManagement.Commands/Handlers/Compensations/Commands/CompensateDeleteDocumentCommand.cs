@@ -18,6 +18,7 @@ namespace DocumentManagement.Commands.Handlers.Compensations.Commands
         }
         public async Task Compensate()
         {
+            // TODO: optionally this compensation could be based on blob soft delete
             var document = _historyStore.Get<Document>(
                 ExecSteps.Documents.Delete.DbRecordDeleted);
             _documentRepository.Add(document);

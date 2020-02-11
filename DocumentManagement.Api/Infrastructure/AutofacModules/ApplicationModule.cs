@@ -45,7 +45,7 @@ namespace DocumentManagement.Api.Infrastructure.AutofacModules
                 .As<IBlobDataService>()
                 .WithParameter("connectionString", _azBlobStorageSettings.ConnectionString)
                 .WithParameter("containerName", _azBlobStorageSettings.ContainerName)
-                .InstancePerDependency();
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<FileStreamReader>()
                 .WithParameter("sizeLimit", _uploadFileSettings.SizeLimit)
