@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentManagement.Api.Controllers
 {
+    /// <summary>
+    /// DocumentController is being used as main point
+    /// for documents CRUD operations.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class DocumentController : ControllerBase
@@ -22,6 +26,12 @@ namespace DocumentManagement.Api.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Endpoint for document uploading.
+        /// Request body stream is being read explicitly in order to
+        /// avoid buffering during model binding.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("upload")]
         [DisableFormValueModelBinding]
         public async Task<IActionResult> Upload()
@@ -55,6 +65,11 @@ namespace DocumentManagement.Api.Controllers
             });
         }
 
+        /// <summary>
+        /// Endpoint for delete documents.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         [HttpPost("delete/{fileName}")]
         public async Task<IActionResult> Delete(string fileName)
         {
@@ -64,7 +79,7 @@ namespace DocumentManagement.Api.Controllers
                     FileName = fileName
                 });
 
-            return result.Status == CommandResultStatus.Fail 
+            return result?.Status == CommandResultStatus.Fail 
                 ? BadRequest(result.Message) 
                 : (IActionResult) NoContent();
         }
