@@ -1,4 +1,4 @@
-﻿namespace DocumentManagement.Commands.Common
+﻿namespace DocumentManagement.Commands.Common.ExecutionHistory
 {
     public static class ExecSteps
     {

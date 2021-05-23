@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DocumentManagement.Commands.Handlers.Compensations.Commands;
 
-namespace DocumentManagement.Commands.Handlers.Compensations
+namespace DocumentManagement.Commands.Common.Compensations
 {
     public class CompensationActionsFactory : ICompensationActionsFactory
     {

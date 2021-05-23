@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
-using DocumentManagement.Commands.Common;
+using DocumentManagement.Commands.Common.Compensations;
+using DocumentManagement.Commands.Common.ExecutionHistory;
 using DocumentManagement.Domain;
 
-namespace DocumentManagement.Commands.Handlers.Compensations.Commands
+namespace DocumentManagement.Commands.Handlers.Compensations
 {
     [CompensationAction(Name = nameof(UploadDocumentCommandHandler))]
     public class CompensateUploadDocumentCommand : ICompensationAction
@@ -17,6 +18,7 @@ namespace DocumentManagement.Commands.Handlers.Compensations.Commands
             _historyStore = historyStore;
         }
 
+        /// <inheritdoc/>
         public async Task Compensate()
         {
             var blobLocation = _historyStore.Get<string>(

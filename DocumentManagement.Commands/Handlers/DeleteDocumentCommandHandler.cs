@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using DocumentManagement.Commands.Commands;
-using DocumentManagement.Commands.Common;
+using DocumentManagement.Commands.Common.ExecutionHistory;
 using DocumentManagement.Commands.Results;
 using DocumentManagement.Domain;
 using MediatR;

@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Castle.DynamicProxy;
-using DocumentManagement.Commands.Handlers.Compensations;
+using DocumentManagement.Commands.Common.Compensations;
 
 namespace DocumentManagement.Api.Infrastructure.Interceptors
 {

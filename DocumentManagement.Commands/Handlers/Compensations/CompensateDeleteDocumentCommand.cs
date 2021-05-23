@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
-using DocumentManagement.Commands.Common;
+using DocumentManagement.Commands.Common.Compensations;
+using DocumentManagement.Commands.Common.ExecutionHistory;
 using DocumentManagement.Domain;
 
-namespace DocumentManagement.Commands.Handlers.Compensations.Commands
+namespace DocumentManagement.Commands.Handlers.Compensations
 {
     [CompensationAction(Name = nameof(DeleteDocumentCommandHandler))]
     public class CompensateDeleteDocumentCommand : ICompensationAction

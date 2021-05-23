@@ -1,4 +1,4 @@
-﻿using DocumentManagement.Commands.Common;
+﻿using DocumentManagement.Commands.Common.ExecutionHistory;
 using Microsoft.AspNetCore.Http;
 
 namespace DocumentManagement.Api.Infrastructure.TracingStore
@@ -12,11 +12,13 @@ namespace DocumentManagement.Api.Infrastructure.TracingStore
             _httpContextAccessor = httpContextAccessor;
         }
 
+        /// <inheritdoc/>
         public void Add(string key, object value)
         {
             _httpContextAccessor.HttpContext.Items.Add(key, value);
         }
 
+        /// <inheritdoc/>
         public T Get<T>(string key) where T : class
         {
             return _httpContextAccessor.HttpContext
